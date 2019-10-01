@@ -1,6 +1,7 @@
 // Essa variavel, representa um service http, com os header
 var api = axios.create({
-  baseURL: 'http://' + environment + 'api.memed.com.br/v1',
+  // Alterar a URL do domínio da memed, quando for para produção
+  baseURL: 'http://sandbox.api.memed.com.br/v1',
   headers: {
     'Accept': 'application/vnd.api+json',
     'Content-Type': 'application/json'
@@ -15,7 +16,8 @@ function getPrescription (idPrescription) {
 
   api.get('/prescricoes/' + idPrescription + '?token=' + token)
     .then(function (response) {
-      // todo: implementar função que grava a prescrição.
+      // Aqui enviará para a base do Tasy.
+      // Pode ser enviado para um webservice alguma aplicação web com direto de escrita.
     });
 }
 
@@ -42,13 +44,8 @@ function initialize () {
         telefone: document.getElementById('cellPhonePatient').value,
         idExterno: document.getElementById('externalId').value,
       }).then(function success() {
-        // Opcionalmente podemos definir as alergias.
-        // https://github.com/MemedDev/sinapse/blob/master/doc/prescricao.md#definindo-alergias
-        MdHub.command.send('plataforma.prescricao', 'setAllergy', [174]);
+        MdHub.module.show(module.name);
       });
-
-      // Apresenta o front da prescrição
-      MdHub.module.show('plataforma.prescricao');
 
       MdHub.event.add('prescricaoSalva', function prescricaoSalvaCallback (idPrescription) {
         // Aqui é possível enviar esse ID para seu back-end obter mais informações

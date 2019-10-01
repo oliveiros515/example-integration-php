@@ -11,7 +11,7 @@ require_once(__DIR__ . '/ClientHttp.php');
  * @return bool|mixed
  * @throws Exception
  */
-function createDoctor($attendance, $url, $environment)
+function createDoctor($attendance, $url)
 {
     $crm = preg_replace("/[^0-9]/", "", $attendance['medico']['crm']);
 
@@ -20,7 +20,7 @@ function createDoctor($attendance, $url, $environment)
 
     $specialtyId = getSpecialty($attendance['medico']);
 
-    $city = getCity($attendance['medico'], $environment);
+    $city = getCity($attendance['medico']);
 
     $payload = [
         'data' => [
@@ -40,13 +40,13 @@ function createDoctor($attendance, $url, $environment)
                 'cidade'        => [
                     'data' => [
                         'type' => 'cidades',
-                        'id'   => $city['id'],
+                        'id'   => $city['id'], // Faça uma verificação antes de enviar o id da cidade
                     ],
                 ],
                 'especialidade' => [
                     'data' => [
                         'type' => 'especialidades',
-                        'id'   => $specialtyId,
+                        'id'   => $specialtyId, // Faça uma verificação antes de enviar o id da especialidade
                     ],
                 ],
             ],
@@ -62,7 +62,8 @@ function createDoctor($attendance, $url, $environment)
     ]);
 
     if ($response !== false) {
-        createConfigurationPrescription('http://' . $environment . '.api.memed.com.br/v1/opcoes-receituario/?token=' . $response['data']['attributes']['token']);
+        // Alterar a url quando for para produção.
+        createConfigurationPrescription('http://sandbox.api.memed.com.br/v1/opcoes-receituario/?token=' . $response['data']['attributes']['token']);
     }
     return $response;
 }
@@ -165,17 +166,18 @@ function getSpecialty($medico)
  *
  * @return bool|int|mixed
  */
-function getCity($medico, $environment)
+function getCity($medico)
 {
     try {
-        $city = execRequest($environment . '.api.memed.com.br/v1/cidades?filter[q]=' . $medico['cidade']);
+        // Alterar a url quando for para produção
+        $city = execRequest('http://sandbox.api.memed.com.br/v1/cidades?filter[q]=' . $medico['cidade']);
 
         if (is_array($city)) {
             return $city['data'][0];
         }
 
         if ($city === false) {
-            return ['id' => 5213];
+            return false;
         }
 
         return $city;
