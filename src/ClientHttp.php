@@ -1,7 +1,6 @@
 <?php
-require_once(__DIR__ . '/log.php');
-
 /**
+ *
  * @param      $uri
  * @param null $data
  * @param      $curlOptions
@@ -26,6 +25,7 @@ function execRequest($uri, $data = [], $curlOptions = [])
         curl_setopt_array($curl, $curlOptions);
     }
 
+    // Caso mande um payload.
     if (count($data) > 0) {
         curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
     }
@@ -34,19 +34,13 @@ function execRequest($uri, $data = [], $curlOptions = [])
     $statusCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
     if (curl_errno($curl)) {
-        writeLog('Erro na request: ' . $uri . '   - Resposta: ' . $response . '   -  StatusCode: ' . $statusCode . "\n");
+        // Tratar o erro quando retornar da API
         return false;
     }
     curl_close($curl);
 
     if ($statusCode >= 400 && $statusCode <= 500) {
-
-        // Trato essas mensagens para não escrever no log.
-        if (strpos($response, 'O CRM enviado') === false &&
-            strpos($response, 'encontrado com este este CRM ou Id') === false) {
-                writeLog('Erro na request: ' . $uri . "\n   - Resposta: " . $response . '   -  StatusCode: ' . $statusCode . "\n");
-        }
-
+        // Tratar o erro quando retornar da API
         return false;
     }
 
