@@ -33,7 +33,7 @@ function initialize () {
         deletePatient: false,
         newPrescription: false,
         optionsPrescription: false,
-        removePatient: false,
+        removePatient: false
       });
 
       // Define o pacientes
@@ -42,7 +42,7 @@ function initialize () {
         endereco: document.getElementById('enderecoPatient').value,
         cidade: document.getElementById('cidadePatient').value,
         telefone: document.getElementById('cellPhonePatient').value,
-        idExterno: document.getElementById('externalId').value,
+        idExterno: document.getElementById('externalId').value
       }).then(function success() {
         MdHub.module.show(module.name);
       });
