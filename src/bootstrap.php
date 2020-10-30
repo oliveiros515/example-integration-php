@@ -13,12 +13,13 @@ try {
     // e pegar com a variável super-global $_GET
    $attendance = [
        'paciente' => [
-           'ddd'      => '11',
-           'celular'  => '11956765676',
-           'rg'       => '123433439',
-           'nome'     => 'José da Silva',
-           'cidade'   => 'São Paulo',
-           'endereco' => 'Rua  Jacarandá, 491  - Martim de Sá',
+           'ddd'        => '11',
+           'celular'    => '11956765676',
+           'rg'         => '123433439',
+           'nome'       => 'José da Silva',
+           'cidade'     => 'São Paulo',
+           'endereco'   => 'Rua  Jacarandá, 491  - Martim de Sá',
+           'externalId' => 'codigo_ou_hash_id'
        ],
        'medico'   => [
            'dataNascimento' => '23/09/1992',
@@ -35,7 +36,7 @@ try {
 
     // Primeiro eu tento pegar o médico na memed.
     // https://ajuda.memed.com.br/pt-BR/articles/2519460-recuperar-o-token-do-usuario
-    $urlGetDoctor = $baseUrl . '/' . $attendance['medico']['cpf'] . '?api-key=' . $apiKey . '&secret-key=' . $secretKey;
+    $urlGetDoctor = $baseUrl . '/' . urlencode($attendance['medico']['crm'].$attendance['medico']['estado']) . '?api-key=' . $apiKey . '&secret-key=' . $secretKey;
     $user = execRequest($urlGetDoctor);
 
     // Se não retornar usuário, mandamos a request para criar

@@ -23,7 +23,7 @@ require_once(__DIR__. '/src/bootstrap.php');
 <input type="hidden" id="cellPhonePatient" value="<?= $attendance['paciente']['celular'] ?>">
 <input type="hidden" id="dddPatient" value="<?= $attendance['paciente']['ddd'] ?>">
 <input type="hidden" id="cidadePatient" value="<?= $attendance['paciente']['cidade'] ?>">
-<input type="hidden" id="externalId" value="<?= $attendance['paciente']['cpf'] ?>">
+<input type="hidden" id="externalId" value="<?= $attendance['paciente']['externalId'] ?>">
 <input type="hidden" id="token" value="<?= $token ?>">
 
 <!-- Precisará alterar o subdomínio quando for subir para produção-->

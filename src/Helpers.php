@@ -140,7 +140,14 @@ function createConfigurationPrescription($url)
         ],
     ];
 
-    $response = execRequest($url, $payload);
+    $options = [
+        CURLOPT_HTTPHEADER     => [
+            'Accept:application/vnd.api+json',
+            'Content-Type:application/json'
+        ],
+    ];
+
+    $response = execRequest($url, $payload, $options);
 
     if ($response === false) {
         echo 'Ocorreu um erro ao gravar as configurações padrões da receita.';
@@ -170,7 +177,7 @@ function getCity($medico)
 {
     try {
         // Alterar a url quando for para produção
-        $city = execRequest('http://sandbox.api.memed.com.br/v1/cidades?filter[q]=' . $medico['cidade']);
+        $city = execRequest('http://sandbox.api.memed.com.br/v1/cidades?filter[q]=' . urlencode($medico['cidade']));
 
         if (is_array($city)) {
             return $city['data'][0];
