@@ -34,6 +34,7 @@ function initialize () {
         newPrescription: false,
         optionsPrescription: false,
         removePatient: false,
+        editPatient: false,
       });
 
       // Define o pacientes
@@ -50,6 +51,11 @@ function initialize () {
       MdHub.event.add('prescricaoSalva', function prescricaoSalvaCallback (idPrescription) {
         // Aqui é possível enviar esse ID para seu back-end obter mais informações
         getPrescription(idPrescription);
+      });
+
+      MdHub.event.add('prescricaoImpressa', function prescricaoImpressaCallback (prescriptionData) {
+        // Aqui é possível recuperar todos os dados da prescrição
+        console.log(prescriptionData);
       });
     }
   });
