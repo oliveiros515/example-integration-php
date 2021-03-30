@@ -28,7 +28,7 @@ require_once(__DIR__. '/src/bootstrap.php');
 
 <!-- Precisará alterar o subdomínio quando for subir para produção-->
 <script type="text/javascript"
-  src="http://sandbox.memed.com.br/modulos/plataforma.sinapse-prescricao/build/sinapse-prescricao.min.js"
+  src="https://sandbox.memed.com.br/modulos/plataforma.sinapse-prescricao/build/sinapse-prescricao.min.js"
   data-token="<?= $token ?>" data-color="#008acb">
 </script>
 

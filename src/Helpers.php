@@ -63,7 +63,7 @@ function createDoctor($attendance, $url)
 
     if ($response !== false) {
         // Alterar a url quando for para produção.
-        createConfigurationPrescription('http://sandbox.api.memed.com.br/v1/opcoes-receituario/?token=' . $response['data']['attributes']['token']);
+        createConfigurationPrescription('https://sandbox.api.memed.com.br/v1/opcoes-receituario/?token=' . $response['data']['attributes']['token']);
     }
     return $response;
 }
@@ -177,7 +177,7 @@ function getCity($medico)
 {
     try {
         // Alterar a url quando for para produção
-        $city = execRequest('http://sandbox.api.memed.com.br/v1/cidades?filter[q]=' . urlencode($medico['cidade']));
+        $city = execRequest('https://sandbox.api.memed.com.br/v1/cidades?filter[q]=' . urlencode($medico['cidade']));
 
         if (is_array($city)) {
             return $city['data'][0];

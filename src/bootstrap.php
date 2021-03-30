@@ -2,7 +2,7 @@
 require_once(__DIR__ . '/Helpers.php');
 
 // Precisará alterar os domínios e as chaves de acesso.
-$baseUrl = 'http://sandbox.api.memed.com.br/v1/sinapse-prescricao/usuarios';
+$baseUrl = 'https://sandbox.api.memed.com.br/v1/sinapse-prescricao/usuarios';
 $apiKey = 'iJGiB4kjDGOLeDFPWMG3no9VnN7Abpqe3w1jEFm6olkhkZD6oSfSmYCm';
 $secretKey = 'Xe8M5GvBGCr4FStKfxXKisRo3SfYKI7KrTMkJpCAstzu2yXVN4av5nmL';
 

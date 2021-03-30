@@ -1,7 +1,7 @@
 // Essa variavel, representa um service http, com os header
 var api = axios.create({
   // Alterar a URL do domínio da memed, quando for para produção
-  baseURL: 'http://sandbox.api.memed.com.br/v1',
+  baseURL: 'https://sandbox.api.memed.com.br/v1',
   headers: {
     'Accept': 'application/vnd.api+json',
     'Content-Type': 'application/json'
