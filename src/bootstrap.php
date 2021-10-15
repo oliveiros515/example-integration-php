@@ -23,13 +23,13 @@ try {
        ],
        'medico'   => [
            'dataNascimento' => '23/09/1992',
-           'cpf'            => '34009454040',
-           'email'          => 'meu@email.com',
+           'cpf'            => '83344388002',
+           'email'          => 'example-integration@memed.com.br',
            'estado'         => 'SP',
            'cidade'         => 'São Paulo',
            'sexo'           => 'M',
            'nome'           => 'Nome do medico',
-           'crm'            => '1234',
+           'crm'            => '33221100',
            'especialidade'  => 62,
        ],
    ];

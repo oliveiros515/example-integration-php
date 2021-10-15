@@ -12,26 +12,20 @@ require_once(__DIR__. '/src/bootstrap.php');
 </head>
 <body>
 
-<div id="loader" class="loader">
-  <div class="dots">
-    <div class="center"></div>
+  <div id="loader" class="loader">
+    <div class="dots">
+      <div class="center"></div>
+    </div>
   </div>
-</div>
 
-<input type="hidden" id="namePatient" value="<?= $attendance['paciente']['nome'] ?>">
-<input type="hidden" id="enderecoPatient" value="<?= $attendance['paciente']['endereco'] ?>">
-<input type="hidden" id="cellPhonePatient" value="<?= $attendance['paciente']['celular'] ?>">
-<input type="hidden" id="dddPatient" value="<?= $attendance['paciente']['ddd'] ?>">
-<input type="hidden" id="cidadePatient" value="<?= $attendance['paciente']['cidade'] ?>">
-<input type="hidden" id="externalId" value="<?= $attendance['paciente']['externalId'] ?>">
-<input type="hidden" id="token" value="<?= $token ?>">
+  <input type="hidden" id="namePatient" value="<?= $attendance['paciente']['nome'] ?>">
+  <input type="hidden" id="enderecoPatient" value="<?= $attendance['paciente']['endereco'] ?>">
+  <input type="hidden" id="cellPhonePatient" value="<?= $attendance['paciente']['celular'] ?>">
+  <input type="hidden" id="dddPatient" value="<?= $attendance['paciente']['ddd'] ?>">
+  <input type="hidden" id="cidadePatient" value="<?= $attendance['paciente']['cidade'] ?>">
+  <input type="hidden" id="externalId" value="<?= $attendance['paciente']['externalId'] ?>">
+  <input type="hidden" id="token" value="<?= $token ?>">
 
-<!-- Precisará alterar o subdomínio quando for subir para produção-->
-<script type="text/javascript"
-  src="https://sandbox.memed.com.br/modulos/plataforma.sinapse-prescricao/build/sinapse-prescricao.min.js"
-  data-token="<?= $token ?>" data-color="#008acb">
-</script>
-
-<script type="text/javascript" src="./src/js/main.js"></script>
+  <script type="text/javascript" src="./src/js/main.js"></script>
 </body>
 </html>

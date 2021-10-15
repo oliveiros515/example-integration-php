@@ -132,7 +132,7 @@ function createConfigurationPrescription($url)
                 'id'                                      => '',
                 'linhas'                                  => '0',
                 'width_logo'                              => '424',
-                'logo_src'                                => 'LOGO_EM_BASE_64',
+                'logo_src'                                => '',
                 'logo_nome'                               => 'logo.png',
                 'zoom_logo'                               => '40',
                 'height_logo'                             => '143.99999999999997',
